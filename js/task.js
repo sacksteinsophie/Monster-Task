@@ -50,7 +50,7 @@ var stim = {
 		"GreenMonster": false,
 		"Squid": false
 	}, // this also keeps it consistent for each monster family throughout the entire task
-	predictiveValidityOptions: [1.0, 0.75, 0.5, 0.5], //possible predicitive validity values that are randomly assigned to each monster
+	//predictiveValidityOptions: [1.0, 0.75, 0.5, 0.5], //possible predicitive validity values that are randomly assigned to each monster
 	dimensionLength: 6, //this keeps track of the maximum length for the 2 dimensions of each monster family
 	numFoodOptions: 2, //number of food options for each family (not in use currently)
 	foodOptions: [["carrot", "broccoli"], ["pancakes", "waffles"], 
@@ -121,6 +121,7 @@ d.pvOrder = _.shuffle(stim.predictiveValidityOptions);
 var foodAssignments = _.shuffle(stim.foodOptions);
 
 for (var i=0; i < stim.numFamilies; i++) {
+	predictiveValidityOptions: (Math.random()*1.5)-.5 - (i * 0.1);
 	d.pvAssignment[stim.monsterFamilies[i]] = d.pvOrder[i];
 
 	//also randomly choose which feature will be the predictive feature for each monster family
